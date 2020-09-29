@@ -9,9 +9,8 @@
  * @param size          Element size in bytes.
  * @param compare       Pointer to the function that 
  *                      compares the vector elements.
- * 
+ * @return              void.
  */
-
-void bubblesort(void *vector, int n, int size, int (*compare)(void*,  void*));
+extern void bubblesort(void *vector, int n, int size, int (*compare)(void*,  void*));
 
 #endif
