@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 #include "utils.h"
-#include "bubble.h"
 
 void quicksort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     if(n <= 1)
