@@ -20,10 +20,11 @@ int main(void) {
     }
     printf("\n");
 
-    bubblesort(vector, 10, sizeof(vector[0]), compara);
+    quicksort(vector, 10, sizeof(vector[0]), compara);
 
     for(int i = 0; i < 10; i++) {
         printf("%f - ", vector[i]);
     }
     printf("\n");
+
 }
