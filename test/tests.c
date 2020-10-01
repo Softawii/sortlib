@@ -35,6 +35,27 @@ int main(void) {
     }
     printf("\n\n");
 
+    printf("Vector: ");
+    for(int i = 0; i < 10; i++) {
+        vector[i] = rand() % 100;
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
+    }
+    
+    printf("\nQuick sort algorithm\n");
+    quicksort(vector, 10, sizeof(vector[0]), compara);
+
+    printf("Vector: ");
+    for(int i = 0; i < 10; i++) {
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
+    }
+    printf("\n\n");
+
     for(int i = 0; i < 10; i++) {
         vector[i] = rand() % 100;
         if(i != 9)
