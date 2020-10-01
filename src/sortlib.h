@@ -5,5 +5,6 @@
 #include "insertion.h"
 #include "selection.h"
 #include "quick.h"
+#include "merge.h"
 
 #endif
