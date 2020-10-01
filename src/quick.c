@@ -30,7 +30,7 @@ void quicksort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
 
         if(a < b) {
             swap(vA, vB, size);
-            a++; b++;
+            a++; b--;
             vA = access(vector, a, size);
             vB = access(vector, b, size);
 
