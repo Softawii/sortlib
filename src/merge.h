@@ -13,4 +13,10 @@
  */
 extern void mergesort(void *vector, int n, int size, int (*compare)(void*,  void*));
 
+/**
+ * Private
+ */
+
+static void merge(void *vector, int n, int size, int (*compare)(void*,  void*));
+
 #endif

@@ -3,7 +3,6 @@
 #include "utils.h"
 #include "merge.h"
 
-
 void mergesort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     int mid;
     if(n > 1) {
@@ -14,7 +13,7 @@ void mergesort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     }
 }
 
-void merge(void *vector, int n, int size, int (*compare)(void*,  void*)) {
+static void merge(void *vector, int n, int size, int (*compare)(void*,  void*)) {
 
     int mid = n / 2;
     int i = 0, j = mid, k = 0;
