@@ -1,8 +1,8 @@
-#ifndef SORTLIB_BUBBLE_H
-#define SORTLIB_BUBBLE_H
+#ifndef SORTLIB_SELECTION_H
+#define SORTLIB_SELECTION_H
 
 /**
- * Sort a vector using bubble sort algorithm.
+ * Sort a vector using selection sort algorithm.
  * 
  * @param vector        Pointer to the vector to be sorted.
  * @param n             Vector size in elements.
@@ -11,6 +11,6 @@
  *                      compares the vector elements.
  * @return              void.
  */
-extern void bubblesort(void *vector, int n, int size, int (*compare)(void*,  void*));
+extern void selectionsort(void *vector, int n, int size, int (*compare)(void*,  void*));
 
 #endif

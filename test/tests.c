@@ -14,17 +14,68 @@ int main(void) {
 
     float * vector = (float *) malloc(sizeof(float) * 10);
 
+    printf("Vector: ");
     for(int i = 0; i < 10; i++) {
         vector[i] = rand() % 100;
-        printf("%f - ", vector[i]);
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
     }
-    printf("\n");
 
+    printf("\nSelection sort algorithm\n");
+    selectionsort(vector, 10, sizeof(vector[0]), compara);
+    
+    printf("Vector: ");
+    for(int i = 0; i < 10; i++) {
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
+    }
+    printf("\n\n");
+
+    printf("Vector: ");
+    for(int i = 0; i < 10; i++) {
+        vector[i] = rand() % 100;
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
+    }
+    
+    printf("\nQuick sort algorithm\n");
     quicksort(vector, 10, sizeof(vector[0]), compara);
 
+    printf("Vector: ");
     for(int i = 0; i < 10; i++) {
-        printf("%f - ", vector[i]);
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
     }
-    printf("\n");
+    printf("\n\n");
 
+    printf("Vector: ");
+    for(int i = 0; i < 10; i++) {
+        vector[i] = rand() % 100;
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
+    }
+
+    printf("\nBubble sort algorithm\n");
+    bubblesort(vector, 10, sizeof(vector[0]), compara);
+    
+    printf("Vector: ");
+    for(int i = 0; i < 10; i++) {
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
+    }
+    printf("\n\n");
+
+    return 0;
 }
