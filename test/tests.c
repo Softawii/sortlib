@@ -56,6 +56,7 @@ int main(void) {
     }
     printf("\n\n");
 
+    printf("Vector: ");
     for(int i = 0; i < 10; i++) {
         vector[i] = rand() % 100;
         if(i != 9)
