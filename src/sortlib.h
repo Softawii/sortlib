@@ -3,5 +3,7 @@
 
 #include "bubble.h"
 #include "insertion.h"
+#include "selection.h"
+#include "quick.h"
 
 #endif
