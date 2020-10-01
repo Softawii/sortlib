@@ -68,6 +68,20 @@ int main(void) {
     printf("\nBubble sort algorithm\n");
     bubblesort(vector, 10, sizeof(vector[0]), compara);
     
+    printf("\n\n");
+
+    printf("Vector: ");
+    for(int i = 0; i < 10; i++) {
+        vector[i] = rand() % 100;
+        if(i != 9)
+            printf("%f - ", vector[i]);
+        else
+            printf("%f", vector[i]);
+    }
+
+    printf("\ninsertion sort algorithm\n");
+    insertionsort(vector, 10, sizeof(vector[0]), compara);
+
     printf("Vector: ");
     for(int i = 0; i < 10; i++) {
         if(i != 9)
