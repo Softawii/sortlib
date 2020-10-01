@@ -19,5 +19,6 @@ void insertionsort(void *vector, int n, int size, int (*compare)(void*,  void*))
             vJ = get(vector, j, size);
         }
         set(vector, j+1, size, key);
+        free(key);
     }
 }
