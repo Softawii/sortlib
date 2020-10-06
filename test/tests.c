@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include "../src/sortlib.h"
 
+#include "evaluator.h"
+#include "unit_test.h"
+
 static int compara(void* a, void* b) {
     float p1 = *((float*) a);
     float p2 = *((float*) b);
@@ -39,60 +42,34 @@ static float* genVector(int length) {
     return vector;
 }
 
+void _unit_test_(UnitTest* ut) {
+    ut->result = ut->evaluator(ut->vector, ut->n, ut->size, ut->comparator);
+}
+
 int main(void) {
 
     float * vector;
+
+    UnitTest Unit;
+    Unit.comparator = compara;
+    Unit.evaluator = is_ordered;
+    Unit.n = 10;
+    Unit.size = sizeof(float);
+    Unit.result = -1;
 
     //------ Selecition sort ------//
     
     vector = genVector(10);
 
+    Unit.vector = (void *) vector;
+
     printf("\nSelection sort algorithm\n");
-    selectionsort(vector, 10, sizeof(vector[0]), compara);
-    
-    printVector(vector, 10);
-    free(vector);
+    quicksort(vector, 10, sizeof(vector[0]), compara);   
 
-    //------ Quick sort ------//
+    _unit_test_(&Unit);
 
-    vector = genVector(10);
-    
-    printf("\nQuick sort algorithm\n");
-    quicksort(vector, 10, sizeof(vector[0]), compara);
+    printf("UNIT TEST: %d\n", Unit.result);
 
     printVector(vector, 10);
     free(vector);
-    
-    //------ Bubble sort ------//
-
-    vector = genVector(10);
-
-    printf("\nBubble sort algorithm\n");
-    bubblesort(vector, 10, sizeof(vector[0]), compara);
-    
-    printVector(vector, 10);
-    free(vector);
-    
-    //------ Insertion sort ------//
-
-    vector = genVector(10);
-
-    printf("\ninsertion sort algorithm\n");
-    insertionsort(vector, 10, sizeof(vector[0]), compara);
-
-    printVector(vector, 10);
-    free(vector);
-
-
-    //------ Merge sort ------//
-
-    vector = genVector(10);
-
-    printf("\nmerge sort algorithm\n");
-    mergesort(vector, 10, sizeof(vector[0]), compara);
-
-    printVector(vector, 10);
-    free(vector);
-
-    return 0;
 }
