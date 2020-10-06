@@ -16,13 +16,14 @@ void selectionsort(void *vector, int n, int size, int (*compare)(void*,  void*))
             p1 = access(vector, i  , size);
             p2 = access(vector, big, size);
 
-            if( (*compare)(p1, p2) ) {
+            if( (*compare)(p1, p2) == 1) {
                 big = i;
             }
         }
 
         p1 = access(vector, big, size);
         p2 = access(vector, end, size);
+
         swap(p1, p2, size);
     }
 }

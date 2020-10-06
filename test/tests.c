@@ -53,7 +53,7 @@ int main(void) {
     UnitTest Unit = createUnitTest(vector, 10, sizeof(vector[0]), compara, is_ordered);
 
     printf("\nSelection sort algorithm\n");
-    bubblesort(vector, 10, sizeof(vector[0]), compara);   
+    selectionsort(vector, 10, sizeof(vector[0]), compara);   
 
     evaluateUnitTest(&Unit);
 
