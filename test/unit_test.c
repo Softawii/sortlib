@@ -18,3 +18,8 @@ void evaluateUnitTest(UnitTest * unitTest) {
                                             unitTest->size, 
                                             unitTest->comparator);
 }
+
+typedef struct UnitTests {
+    UnitTest unitTest;
+    UnitTest *next;
+};
