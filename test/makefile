@@ -24,7 +24,8 @@ all: $(PROJ_NAME)
 
 $(PROJ_NAME): $(OBJ)
 	@echo "Generating binary..."
-	ar -cvq libsortlib.a *.o
+	ar -cvq libtestlib.a *.o
+	gcc tests.c -o tests ../src/libsortlib.a libtestlib.a
 	make makefile clean
 
 %.o: %.c %.h
