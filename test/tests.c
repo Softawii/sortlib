@@ -42,31 +42,20 @@ static float* genVector(int length) {
     return vector;
 }
 
-void _unit_test_(UnitTest* ut) {
-    ut->result = ut->evaluator(ut->vector, ut->n, ut->size, ut->comparator);
-}
-
 int main(void) {
 
     float * vector;
-
-    UnitTest Unit;
-    Unit.comparator = compara;
-    Unit.evaluator = is_ordered;
-    Unit.n = 10;
-    Unit.size = sizeof(float);
-    Unit.result = -1;
 
     //------ Selecition sort ------//
     
     vector = genVector(10);
 
-    Unit.vector = (void *) vector;
+    UnitTest Unit = createUnitTest(vector, 10, sizeof(vector[0]), compara, is_ordered);
 
     printf("\nSelection sort algorithm\n");
     quicksort(vector, 10, sizeof(vector[0]), compara);   
 
-    _unit_test_(&Unit);
+    evaluateUnitTest(&Unit);
 
     printf("UNIT TEST: %d\n", Unit.result);
 

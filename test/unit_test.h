@@ -15,4 +15,7 @@ struct _UnitTest{
 
 typedef struct _UnitTest UnitTest;
 
+void evaluateUnitTest(UnitTest * unitTest);
+UnitTest createUnitTest(void *vector, int n, int size, Comparator comparator, Evaluator evaluator);
+
 #endif

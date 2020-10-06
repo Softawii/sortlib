@@ -14,8 +14,6 @@ int is_ordered(void *vector, int n, int size, int (*compare)(void*,  void*)) {
         e_1 = access(vector, i + 1, size);
 
         if( (*compare)(e, e_1) == 1) {
-        
-            printf("VECTOR: %f, %f\n", *((float*) e),  *((float*) e_1));
 
             return 0;
         }

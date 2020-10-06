@@ -1,5 +1,8 @@
 #include <stdlib.h>
 
+#ifndef _SORTLIB_UTILS_H_
+#define _SORTLIB_UTILS_H_ 
+
 static void* access(void * vector, int i, int size) {
     char* t = (char*) vector; 
     t += size * i;
@@ -39,3 +42,5 @@ static void* get(void* vector, int i, int size) {
 
     return (void*) val;
 }
+
+#endif
