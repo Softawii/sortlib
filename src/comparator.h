@@ -1,5 +1,5 @@
-#ifndef __SORTLIB_COMPARER_H__
-#define __SORTLIB_COMPARER_H__
+#ifndef __SORTLIB_COMPARATOR_H__
+#define __SORTLIB_COMPARATOR_H__
 
 extern int compareInt(void * a, void * b);
 
