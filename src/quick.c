@@ -1,8 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "utils.h"
-#include "quick.h"
+#include "sortlib.h"
 
 void quicksort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     if(n <= 1)

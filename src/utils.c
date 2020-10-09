@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "utils.h"
+#include "sortlib.h"
 
 void* access(void * vector, int i, int size) {
     char* t = (char*) vector; 

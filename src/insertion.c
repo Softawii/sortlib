@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
-#include "utils.h"
-#include "insertion.h"
+#include "sortlib.h"
 
 
 void insertionsort(void *vector, int n, int size, int (*compare)(void*,  void*)) {

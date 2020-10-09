@@ -1,7 +1,6 @@
 #include<stdlib.h>
 
-#include "utils.h"
-#include "selection.h"
+#include "sortlib.h"
 
 void selectionsort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     int end, i, big;

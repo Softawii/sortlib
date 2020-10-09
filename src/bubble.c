@@ -1,9 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#include "utils.h"
-#include "bubble.h"
-
+#include "sortlib.h"
 
 void bubblesort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     int end, i;
