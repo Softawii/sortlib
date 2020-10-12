@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "../src/sortlib.h"
+#include "sortlib.h"
 
 #include "evaluator.h"
 #include "unit_test.h"

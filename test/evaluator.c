@@ -1,6 +1,6 @@
 #include <stdbool.h>
 
-#include "../src/utils.h"
+#include "sortlib.h"
 #include "evaluator.h"
 
 int is_ordered(void *vector, int n, int size, int (*compare)(void*,  void*)) {

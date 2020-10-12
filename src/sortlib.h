@@ -1,13 +1,16 @@
 #ifndef SORTLIB_H
 #define SORTLIB_H
 
-void* access(void * vector, int i, int size);
+extern void* access(void * vector, int i, int size);
 
-void swap(void* a, void* b, int size);
+extern void swap(void* a, void* b, int size);
 
-void set(void* vector, int i, int size, void* value);
+extern void set(void* vector, int i, int size, void* value);
 
-void* get(void* vector, int i, int size);
+extern void* get(void* vector, int i, int size);
+
+static void merge(void *vector, int n, int size, int (*compare)(void*,  void*));
+
 
 /**
  * Sort a vector using bubble sort algorithm.
@@ -44,11 +47,6 @@ extern void insertionsort(void *vector, int n, int size, int (*compare)(void*,  
  * @return              void.
  */
 extern void mergesort(void *vector, int n, int size, int (*compare)(void*,  void*));
-
-/**
- * Private
- */
-static void merge(void *vector, int n, int size, int (*compare)(void*,  void*));
 
 /**
  * Sort a vector using quick sort algorithm.
