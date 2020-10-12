@@ -11,11 +11,12 @@ struct _UnitTest{
     Comparator comparator;
     Evaluator evaluator;
     int result;
+    double time;
 };
 
 typedef struct _UnitTest UnitTest;
 
-void evaluateUnitTest(UnitTest * unitTest);
+void evaluateUnitTest(UnitTest * unitTest, double time);
 UnitTest createUnitTest(void *vector, int n, int size, Comparator comparator, Evaluator evaluator);
 
 #endif

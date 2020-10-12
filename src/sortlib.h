@@ -1,6 +1,8 @@
 #ifndef SORTLIB_H
 #define SORTLIB_H
 
+#include "comparator.h"
+
 extern void* access(void * vector, int i, int size);
 
 extern void swap(void* a, void* b, int size);

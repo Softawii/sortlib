@@ -12,10 +12,11 @@ UnitTest createUnitTest(void *vector, int n, int size, Comparator comparator, Ev
 }
 
 
-void evaluateUnitTest(UnitTest * unitTest) {
+void evaluateUnitTest(UnitTest * unitTest, double time) {
     unitTest->result = unitTest->evaluator( unitTest->vector, 
                                             unitTest->n, 
                                             unitTest->size, 
                                             unitTest->comparator);
+    unitTest->time = time;
 }
 
