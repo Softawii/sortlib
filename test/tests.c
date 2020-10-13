@@ -144,14 +144,15 @@ UnitTest * evaluateAllMethods(int n, int seed, int* (*generator)(int, int)) {
     return unit;    
 }
 
-void PrintUnitTest(UnitTest * unit, int n, int seed, char * metodo) {
-    printf("Testes de metodos para %d instancias usando geracao %s com a seed %d\n", n, metodo, seed);
-    printf("SelectionSort - Result: %s : Time: %.5f\n", unit[0].result == 1 ? "OK" : "FAIL", unit[0].time);
-    printf("QuickSort     - Result: %s : Time: %.5f\n", unit[1].result == 1 ? "OK" : "FAIL", unit[1].time);
-    printf("MergeSort     - Result: %s : Time: %.5f\n", unit[2].result == 1 ? "OK" : "FAIL", unit[2].time);
-    printf("InsertionSort - Result: %s : Time: %.5f\n", unit[3].result == 1 ? "OK" : "FAIL", unit[3].time);
-    printf("BubbleSort    - Result: %s : Time: %.5f\n", unit[4].result == 1 ? "OK" : "FAIL", unit[4].time);
-
+void PrintUnitTest(UnitTest * unit, int n, int seed, char * metodo, char * name) {
+    FILE * arq = fopen(name, "a+");
+    fprintf(arq, "Testes de metodos para %d instancias usando geracao %s com a seed %d\n", n, metodo, seed);
+    fprintf(arq, "SelectionSort - Result: %s : Time: %.5f\n", unit[0].result == 1 ? "OK" : "FAIL", unit[0].time);
+    fprintf(arq, "QuickSort     - Result: %s : Time: %.5f\n", unit[1].result == 1 ? "OK" : "FAIL", unit[1].time);
+    fprintf(arq, "MergeSort     - Result: %s : Time: %.5f\n", unit[2].result == 1 ? "OK" : "FAIL", unit[2].time);
+    fprintf(arq, "InsertionSort - Result: %s : Time: %.5f\n", unit[3].result == 1 ? "OK" : "FAIL", unit[3].time);
+    fprintf(arq, "BubbleSort    - Result: %s : Time: %.5f\n", unit[4].result == 1 ? "OK" : "FAIL", unit[4].time);
+    fclose(arq);
 }
 
 int main(void) {
@@ -160,20 +161,18 @@ int main(void) {
 
     for(int i = 0; i < 5; i++) {
         UnitTest * unit = evaluateAllMethods(size[i], 123, genVectorRandom);
-        PrintUnitTest(unit, size[i], 123, "randomica");
+        PrintUnitTest(unit, size[i], 123, "randomica", "test.txt");
         free(unit);
     }
     for(int i = 0; i < 5; i++) {
         UnitTest * unit = evaluateAllMethods(size[i], 123, genVectorOrdered);
-        PrintUnitTest(unit, size[i], 123, "ordenada");
+        PrintUnitTest(unit, size[i], 123, "ordenada", "test.txt");
         free(unit);
     }
     for(int i = 0; i < 5; i++) {
         UnitTest * unit = evaluateAllMethods(size[i], 123, genVectorReverse);
-        PrintUnitTest(unit, size[i], 123, "reversa");
+        PrintUnitTest(unit, size[i], 123, "reversa", "test.txt");
         free(unit);
     }
-
-
     
 }
