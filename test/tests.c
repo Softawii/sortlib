@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <windows.h>
+#include <string.h>
+#include <time.h>
 
 #include "../src/sortlib.h"
 
@@ -48,131 +49,114 @@ static int* genVectorRandom(int length, int seed) {
     return vector;
 }
 
-UnitTest * evaluateAllMethods(int n, int seed, int* (*generator)(int, int)) {
+/**
+ * 
+ *  Testes para um método específico, com um número de instâncias específico, 
+ *  com um método de geração específico e uma seed específica.
+ * 
+ */
+UnitTest evaluateMethod(int n, int seed, int* (*generator)(int, int), SortMethod methodsort) {
     
-    UnitTest * unit = (UnitTest *) malloc(sizeof(UnitTest) * 5);
+    UnitTest unit;
     int * vector; 
     
-    LARGE_INTEGER frequency, start, end;
-    double interval;
+    struct timespec start, end;
     
-    {   // selectionsort
-        vector = generator(n, seed);
-        QueryPerformanceFrequency(&frequency);
-        QueryPerformanceCounter(&start);
-
-        selectionsort(vector, n, sizeof(vector[0]), compareInt);
-        
-        QueryPerformanceCounter(&end);
-        
-        interval = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
-        unit[0] = createUnitTest(vector, 10, sizeof(vector[0]), compareInt, is_ordered);
-
-        evaluateUnitTest(&unit[0], interval);
-
-        free(vector);
-    }
-    
+    long double seconds, nanoseconds;
+    long double interval;
+      
     {   // quicksort
         vector = generator(n, seed);
-        QueryPerformanceFrequency(&frequency);
-        QueryPerformanceCounter(&start);
 
-        quicksort(vector, n, sizeof(vector[0]), compareInt);
-        
-        QueryPerformanceCounter(&end);
-        
-        interval = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
-        unit[1] = createUnitTest(vector, 10, sizeof(vector[0]), compareInt, is_ordered);
+        clock_gettime(CLOCK_REALTIME, &start);
 
-        evaluateUnitTest(&unit[1], interval);
+        methodsort(vector, n, sizeof(vector[0]), compareInt);
+        
+        clock_gettime(CLOCK_REALTIME, &end);
+        
+        seconds = end.tv_sec - start.tv_sec;
+        nanoseconds = end.tv_nsec - start.tv_nsec;
+
+        interval = seconds + (nanoseconds * 1e-9);
+
+        unit = createUnitTest(vector, 10, sizeof(vector[0]), compareInt, is_ordered);
+
+        evaluateUnitTest(&unit, interval);
 
         free(vector);
     }
     
-    {   // mergesort
-        vector = generator(n, seed);
-        QueryPerformanceFrequency(&frequency);
-        QueryPerformanceCounter(&start);
-
-        mergesort(vector, n, sizeof(vector[0]), compareInt);
-        
-        QueryPerformanceCounter(&end);
-        
-        interval = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
-        unit[2] = createUnitTest(vector, 10, sizeof(vector[0]), compareInt, is_ordered);
-
-        evaluateUnitTest(&unit[2], interval);
-
-        free(vector);
-    }
-    
-    {   // insertionsort
-        vector = generator(n, seed);
-        QueryPerformanceFrequency(&frequency);
-        QueryPerformanceCounter(&start);
-
-        insertionsort(vector, n, sizeof(vector[0]), compareInt);
-        
-        QueryPerformanceCounter(&end);
-        
-        interval = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
-        unit[3] = createUnitTest(vector, 10, sizeof(vector[0]), compareInt, is_ordered);
-
-        evaluateUnitTest(&unit[3], interval);
-
-        free(vector);
-    }
-    
-    {   // bubblesort
-        vector = generator(n, seed);
-        QueryPerformanceFrequency(&frequency);
-        QueryPerformanceCounter(&start);
-
-        bubblesort(vector, n, sizeof(vector[0]), compareInt);
-        
-        QueryPerformanceCounter(&end);
-        
-        interval = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
-        unit[4] = createUnitTest(vector, 10, sizeof(vector[0]), compareInt, is_ordered);
-
-        evaluateUnitTest(&unit[4], interval);
-
-        free(vector);
-    }
-
     return unit;    
 }
 
-void PrintUnitTest(UnitTest * unit, int n, int seed, char * metodo, char * name) {
-    FILE * arq = fopen(name, "a+");
-    fprintf(arq, "Testes de metodos para %d instancias usando geracao %s com a seed %d\n", n, metodo, seed);
-    fprintf(arq, "SelectionSort - Result: %s : Time: %.5f\n", unit[0].result == 1 ? "OK" : "FAIL", unit[0].time);
-    fprintf(arq, "QuickSort     - Result: %s : Time: %.5f\n", unit[1].result == 1 ? "OK" : "FAIL", unit[1].time);
-    fprintf(arq, "MergeSort     - Result: %s : Time: %.5f\n", unit[2].result == 1 ? "OK" : "FAIL", unit[2].time);
-    fprintf(arq, "InsertionSort - Result: %s : Time: %.5f\n", unit[3].result == 1 ? "OK" : "FAIL", unit[3].time);
-    fprintf(arq, "BubbleSort    - Result: %s : Time: %.5f\n", unit[4].result == 1 ? "OK" : "FAIL", unit[4].time);
+void PrintUnitTest(UnitTest unit, int n, int seed, char * method, char * name) {
+    char buf[1024] = "";
+    
+    strcat(buf, "results/");
+    strcat(buf, name);
+    strcat(buf, ".csv");
+    
+    FILE * arq = fopen(buf, "a+");
+
+    fprintf(arq, "%s,%s,%d,%s,%.9Lf\n", name, method, n, unit.result == 1 ? "OK" : "FAIL", unit.time);
+    fclose(arq);
+}
+
+void resetPrintUnitTest(char * name) {
+    char buf[1024] = "";
+    
+    strcat(buf, "results/");
+    strcat(buf, name);
+    strcat(buf, ".csv");
+
+    FILE * arq = fopen(buf, "w");
+
+    // mergesort,random,100,OK,0.000032900 //
+    fprintf(arq, "Method, Type, Instances, Status, Time\n");
+
     fclose(arq);
 }
 
 int main(void) {
     int size[] = {100, 1000, 100000, 1000000, 10000000};
-    // RANDOMICOS
 
-    for(int i = 0; i < 5; i++) {
-        UnitTest * unit = evaluateAllMethods(size[i], 123, genVectorRandom);
-        PrintUnitTest(unit, size[i], 123, "randomica", "test.txt");
-        free(unit);
+    {
+        char name[] = "mergesort";
+        
+        resetPrintUnitTest(name);
+
+        for(int i = 0; i < 5; i++) {
+            UnitTest unit;
+
+            unit = evaluateMethod(size[i], 123, genVectorRandom, mergesort);
+            PrintUnitTest(unit, size[i], 123, "random", name); 
+            
+            unit = evaluateMethod(size[i], 123, genVectorOrdered, mergesort);
+            PrintUnitTest(unit, size[i], 123, "ordered", name); 
+
+            unit = evaluateMethod(size[i], 123, genVectorReverse, mergesort);
+            PrintUnitTest(unit, size[i], 123, "reverse", name); 
+        }
     }
-    for(int i = 0; i < 5; i++) {
-        UnitTest * unit = evaluateAllMethods(size[i], 123, genVectorOrdered);
-        PrintUnitTest(unit, size[i], 123, "ordenada", "test.txt");
-        free(unit);
-    }
-    for(int i = 0; i < 5; i++) {
-        UnitTest * unit = evaluateAllMethods(size[i], 123, genVectorReverse);
-        PrintUnitTest(unit, size[i], 123, "reversa", "test.txt");
-        free(unit);
+
+    // QUICK
+    {
+        char name[] = "quicksort";
+
+        resetPrintUnitTest(name);
+        
+        for(int i = 0; i < 5; i++) {
+            UnitTest unit;
+
+            unit = evaluateMethod(size[i], 123, genVectorRandom, quicksort);
+            PrintUnitTest(unit, size[i], 123, "random", name); 
+            
+            unit = evaluateMethod(size[i], 123, genVectorOrdered, quicksort);
+            PrintUnitTest(unit, size[i], 123, "ordered", name); 
+
+            unit = evaluateMethod(size[i], 123, genVectorReverse, quicksort);
+            PrintUnitTest(unit, size[i], 123, "reverse", name); 
+        }
     }
     
 }

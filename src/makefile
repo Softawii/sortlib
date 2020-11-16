@@ -31,6 +31,4 @@ $(PROJ_NAME): $(OBJ)
 	$(CC) $< $(CC_FLAGS)
 
 clean:
-	@echo "clean project"
-	del /Q /F *.o
-	@echo "clean completed"
+	rm  *.o

@@ -3,6 +3,9 @@
 
 #include "comparator.h"
 
+
+typedef void (*SortMethod)(void *vector, int n, int size, int (*compare)(void*,  void*));
+
 extern void* access(void * vector, int i, int size);
 
 extern void swap(void* a, void* b, int size);

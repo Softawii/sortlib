@@ -26,12 +26,10 @@ $(PROJ_NAME): $(OBJ)
 	@echo "Generating binary..."
 	ar -cvq libtestlib.a *.o
 	gcc tests.c -o tests ../src/libsortlib.a libtestlib.a
-	make makefile clean
+	rm  *.o
 
 %.o: %.c %.h
 	$(CC) $< $(CC_FLAGS)
 
 clean:
-	@echo "clean project"
-	del /Q /F *.o
-	@echo "clean completed"
+	rm  *.o
