@@ -123,3 +123,13 @@ Methods = [merge_reverse, bubble_reverse, quick_reverse, selection_reverse, inse
 Instances = quick_random.Instances
 
 PlotData(Methods, Instances, "Reverse") 
+
+plot([string(i) for i in bubble_random.Instances] , bubble_random.Time, label="BubbleSort")
+plot!([string(i) for i in selection_random.Instances] , selection_random.Time, label="SelectionSort")
+plot!([string(i) for i in insertion_random.Instances] , insertion_random.Time, label="InsertionSort")
+plot!([string(i) for i in quick_random.Instances] , quick_random.Time,  label="QuickSort")
+plot!([string(i) for i in merge_random.Instances] , merge_random.Time,  label="MergeSort")
+
+
+
+plot(["100", "200", "300"], [10, 20, 30])
