@@ -1,4 +1,4 @@
-Method, Type, Instances, Status, Time
+Method,Type,Instances,Status,Time
 insertionsort,random,100,OK,0.000054700
 insertionsort,ordered,100,OK,0.000001800
 insertionsort,reverse,100,OK,0.000080200

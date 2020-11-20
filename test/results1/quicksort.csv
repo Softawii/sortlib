@@ -1,4 +1,4 @@
-Method, Type, Instances, Status, Time
+Method,Type,Instances,Status,Time
 quicksort,random,100,OK,0.000012300
 quicksort,ordered,100,OK,0.000008200
 quicksort,reverse,100,OK,0.000022800

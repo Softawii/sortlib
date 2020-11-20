@@ -1,4 +1,4 @@
-Method, Type, Instances, Status, Time
+Method,Type,Instances,Status,Time
 bubblesort,random,100,OK,0.000075700
 bubblesort,ordered,100,OK,0.000001400
 bubblesort,reverse,100,OK,0.000090500

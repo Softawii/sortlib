@@ -1,4 +1,4 @@
-Method, Type, Instances, Status, Time
+Method,Type,Instances,Status,Time
 selectionsort,random,100,OK,0.000029600
 selectionsort,ordered,100,OK,0.000028200
 selectionsort,reverse,100,OK,0.000028900

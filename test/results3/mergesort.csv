@@ -1,4 +1,4 @@
-Method, Type, Instances, Status, Time
+Method,Type,Instances,Status,Time
 mergesort,random,100,OK,0.000025600
 mergesort,ordered,100,OK,0.000021400
 mergesort,reverse,100,OK,0.000022300
