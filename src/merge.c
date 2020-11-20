@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
-#include "utils.h"
-#include "merge.h"
+#include "sortlib.h"
 
 void mergesort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     int mid;

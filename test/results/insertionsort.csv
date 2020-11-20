@@ -1,0 +1,13 @@
+Method, Type, Instances, Status, Time
+insertionsort,random,100,OK,0.000038100
+insertionsort,ordered,100,OK,0.000001300
+insertionsort,reverse,100,OK,0.000078500
+insertionsort,random,1000,OK,0.004171900
+insertionsort,ordered,1000,OK,0.000006500
+insertionsort,reverse,1000,OK,0.008034000
+insertionsort,random,100000,OK,43.023191000
+insertionsort,ordered,100000,OK,0.000579100
+insertionsort,reverse,100000,OK,78.693255200
+insertionsort,random,1000000,OK,3914.567485000
+insertionsort,ordered,1000000,OK,0.005786800
+insertionsort,reverse,1000000,OK,7812.654832200

@@ -1,0 +1,13 @@
+Method, Type, Instances, Status, Time
+selectionsort,random,100,OK,0.000029600
+selectionsort,ordered,100,OK,0.000028200
+selectionsort,reverse,100,OK,0.000028900
+selectionsort,random,1000,OK,0.002614300
+selectionsort,ordered,1000,OK,0.002589500
+selectionsort,reverse,1000,OK,0.002556700
+selectionsort,random,100000,OK,25.580281500
+selectionsort,ordered,100000,OK,26.226420000
+selectionsort,reverse,100000,OK,25.938104500
+selectionsort,random,1000000,OK,2799.510769300
+selectionsort,ordered,1000000,OK,3116.390252300
+selectionsort,reverse,1000000,OK,2850.481020100

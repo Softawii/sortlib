@@ -1,0 +1,16 @@
+Method, Type, Instances, Status, Time
+quicksort,random,100,OK,0.000018100
+quicksort,ordered,100,OK,0.000008200
+quicksort,reverse,100,OK,0.000010200
+quicksort,random,1000,OK,0.000172600
+quicksort,ordered,1000,OK,0.000100800
+quicksort,reverse,1000,OK,0.000123900
+quicksort,random,100000,OK,0.036674200
+quicksort,ordered,100000,OK,0.030687600
+quicksort,reverse,100000,OK,0.026815200
+quicksort,random,1000000,OK,0.398302800
+quicksort,ordered,1000000,OK,0.283744400
+quicksort,reverse,1000000,OK,0.306686800
+quicksort,random,10000000,OK,4.883026500
+quicksort,ordered,10000000,OK,2.811751100
+quicksort,reverse,10000000,OK,2.911166500

@@ -1,0 +1,13 @@
+Method, Type, Instances, Status, Time
+bubblesort,random,100,OK,0.000075700
+bubblesort,ordered,100,OK,0.000001400
+bubblesort,reverse,100,OK,0.000090500
+bubblesort,random,1000,OK,0.007440200
+bubblesort,ordered,1000,OK,0.000006100
+bubblesort,reverse,1000,OK,0.009009200
+bubblesort,random,100000,OK,76.430909600
+bubblesort,ordered,100000,OK,0.000549000
+bubblesort,reverse,100000,OK,81.805444500
+bubblesort,random,1000000,OK,7185.080577900
+bubblesort,ordered,1000000,OK,0.005516300
+bubblesort,reverse,1000000,OK,8147.631930200

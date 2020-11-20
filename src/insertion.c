@@ -1,23 +1,21 @@
 #include <stdlib.h>
 
-#include "utils.h"
-#include "insertion.h"
+#include "sortlib.h"
 
 
 void insertionsort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     int i, j;
-    void *key;
+    void *vJ_1;
     void* vJ;
     for( i = 1; i < n; i++) { 
-        j = i - 1;
-        key = get(vector,i,size);
-        vJ = get(vector, j, size);
-        while(j >= 0 && (*compare)(vJ, key)) {
-            set(vector, j+1, size, vJ);
+        j = i;
+        vJ_1 = access(vector,j-1,size);
+        vJ = access(vector, j, size);
+        while(j > 0 && (*compare)(vJ_1, vJ) == 1) {
+            swap(vJ, vJ_1, size);
             j--;
-            vJ = get(vector, j, size);
+            vJ_1 = access(vector, j - 1, size);
+            vJ   = access(vector, j    , size);
         }
-        set(vector, j+1, size, key);
-        free(key);
     }
 }

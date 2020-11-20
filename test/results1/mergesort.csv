@@ -1,0 +1,16 @@
+Method, Type, Instances, Status, Time
+mergesort,random,100,OK,0.000028500
+mergesort,ordered,100,OK,0.000020900
+mergesort,reverse,100,OK,0.000021600
+mergesort,random,1000,OK,0.000345100
+mergesort,ordered,1000,OK,0.000288000
+mergesort,reverse,1000,OK,0.000278600
+mergesort,random,100000,OK,0.060726500
+mergesort,ordered,100000,OK,0.049102600
+mergesort,reverse,100000,OK,0.057375500
+mergesort,random,1000000,OK,0.978370000
+mergesort,ordered,1000000,OK,0.855587900
+mergesort,reverse,1000000,OK,0.623020100
+mergesort,random,10000000,OK,10.668540100
+mergesort,ordered,10000000,OK,9.805899600
+mergesort,reverse,10000000,OK,9.405782200
