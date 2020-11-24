@@ -110,26 +110,39 @@ insertion_random, insertion_ordered, insertion_reverse = CSVAverage(path_pre, pa
 Methods = [merge_random, bubble_random, quick_random, selection_random, insertion_random]
 Instances = quick_random.Instances
 
-PlotData(Methods, Instances, "Random") 
-
 
 Methods = [merge_ordered, bubble_ordered, quick_ordered, selection_ordered, insertion_ordered]
 Instances = quick_random.Instances
 
-PlotData(Methods, Instances, "Ordered") 
 
 
 Methods = [merge_reverse, bubble_reverse, quick_reverse, selection_reverse, insertion_reverse]
 Instances = quick_random.Instances
 
-PlotData(Methods, Instances, "Reverse") 
 
-plot([string(i) for i in bubble_random.Instances] , bubble_random.Time, label="BubbleSort")
+
+random = plot([string(i) for i in bubble_random.Instances] , bubble_random.Time, label="BubbleSort", title="Aleatório", xlabel="Instâncias", ylabel="Segundos")
 plot!([string(i) for i in selection_random.Instances] , selection_random.Time, label="SelectionSort")
 plot!([string(i) for i in insertion_random.Instances] , insertion_random.Time, label="InsertionSort")
 plot!([string(i) for i in quick_random.Instances] , quick_random.Time,  label="QuickSort")
 plot!([string(i) for i in merge_random.Instances] , merge_random.Time,  label="MergeSort")
 
+png(random, "random.png")
+
+sequential = plot([string(i) for i in bubble_ordered.Instances] , bubble_ordered.Time, label="BubbleSort", title="Ordenado")
+plot!([string(i) for i in selection_ordered.Instances] , selection_ordered.Time, label="SelectionSort")
+plot!([string(i) for i in insertion_ordered.Instances] , insertion_ordered.Time, label="InsertionSort")
+plot!([string(i) for i in quick_ordered.Instances] , quick_ordered.Time,  label="QuickSort")
+plot!([string(i) for i in merge_ordered.Instances] , merge_ordered.Time,  label="MergeSort")
+
+png(sequential, "sequential.png")
 
 
-plot(["100", "200", "300"], [10, 20, 30])
+reverse = plot([string(i) for i in bubble_reverse.Instances] , bubble_reverse.Time, label="BubbleSort", title="Reverso")
+plot!([string(i) for i in selection_reverse.Instances] , selection_reverse.Time, label="SelectionSort")
+plot!([string(i) for i in insertion_reverse.Instances] , insertion_reverse.Time, label="InsertionSort")
+plot!([string(i) for i in quick_reverse.Instances] , quick_reverse.Time,  label="QuickSort")
+plot!([string(i) for i in merge_reverse.Instances] , merge_reverse.Time,  label="MergeSort")
+
+png(reverse, "reverse.png")
+
