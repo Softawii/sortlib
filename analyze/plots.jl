@@ -129,7 +129,7 @@ plot!([string(i) for i in merge_random.Instances] , merge_random.Time,  label="M
 
 png(random, "random.png")
 
-sequential = plot([string(i) for i in bubble_ordered.Instances] , bubble_ordered.Time, label="BubbleSort", title="Ordenado")
+sequential = plot([string(i) for i in bubble_ordered.Instances] , bubble_ordered.Time, label="BubbleSort", title="Ordenado", xlabel="Instâncias", ylabel="Segundos")
 plot!([string(i) for i in selection_ordered.Instances] , selection_ordered.Time, label="SelectionSort")
 plot!([string(i) for i in insertion_ordered.Instances] , insertion_ordered.Time, label="InsertionSort")
 plot!([string(i) for i in quick_ordered.Instances] , quick_ordered.Time,  label="QuickSort")
@@ -138,7 +138,7 @@ plot!([string(i) for i in merge_ordered.Instances] , merge_ordered.Time,  label=
 png(sequential, "sequential.png")
 
 
-reverse = plot([string(i) for i in bubble_reverse.Instances] , bubble_reverse.Time, label="BubbleSort", title="Reverso")
+reverse = plot([string(i) for i in bubble_reverse.Instances] , bubble_reverse.Time, label="BubbleSort", title="Reverso", xlabel="Instâncias", ylabel="Segundos")
 plot!([string(i) for i in selection_reverse.Instances] , selection_reverse.Time, label="SelectionSort")
 plot!([string(i) for i in insertion_reverse.Instances] , insertion_reverse.Time, label="InsertionSort")
 plot!([string(i) for i in quick_reverse.Instances] , quick_reverse.Time,  label="QuickSort")
