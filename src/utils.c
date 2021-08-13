@@ -1,13 +1,14 @@
 #include <stdlib.h>
+#include "sortlib.h"
 
-static void* access(void * vector, int i, int size) {
+void* access(void * vector, int i, int size) {
     char* t = (char*) vector; 
     t += size * i;
 
     return (void*) t;
 }
 
-static void swap(void* a, void* b, int size) {
+void swap(void* a, void* b, int size) {
     char* v1 = (char*) a;
     char* v2 = (char*) b;
     int i; 
@@ -18,7 +19,7 @@ static void swap(void* a, void* b, int size) {
     } 
 }
 
-static void set(void* vector, int i, int size, void* value) {    
+void set(void* vector, int i, int size, void* value) {    
     char *val = (char*) value;
     char *vec = (char*) vector;
     vec += size * i;
@@ -27,7 +28,7 @@ static void set(void* vector, int i, int size, void* value) {
     }
 }
 
-static void* get(void* vector, int i, int size) {
+void* get(void* vector, int i, int size) {
     char *vec = (char*) vector;
     vec += size * i;
  
