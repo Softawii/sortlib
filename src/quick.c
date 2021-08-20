@@ -38,5 +38,5 @@ void _qsort(void* v, int size, int left, int right, int (*compare)(void*, void*)
 
 void quicksort(void *vector, int n, int size, int (*compare)(void*,  void*)) {
     
-    _qsort(vector, size, 0, n, compare);
+    _qsort(vector, size, 0, n - 1, compare);
 }
